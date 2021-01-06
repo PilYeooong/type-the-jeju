@@ -19,5 +19,7 @@ export default () => {
       console.error(err);
       done(err);
     }
-  })
+  });
+
+  local();
 }
