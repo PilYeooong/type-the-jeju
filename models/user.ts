@@ -53,6 +53,8 @@ User.init(
 );
 
 export const associate = (db: dbType) => {
+  db.User.belongsToMany(db.Place, { through: 'Like', as: 'Liked' });
+  db.User.belongsToMany(db.Place, { through: 'WishList', as: 'Wished' });
 }
 
 export default User;
