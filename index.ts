@@ -61,4 +61,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 app.listen(4000, () => {
   console.log(`server is running on port 4000`);
-})
+});
+
+export default app;

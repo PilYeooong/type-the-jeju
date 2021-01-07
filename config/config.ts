@@ -7,13 +7,14 @@ type Config = {
   password: string,
   database: string,
   host: string,
-  [key: string]: string,
+  logging: boolean,
+  [key: string]: string | boolean,
 }
 
 interface IConfig {
   development: Config;
   test: Config;
-  production: Config
+  production: Config;
 }
 
 const config: IConfig = {
@@ -22,21 +23,24 @@ const config: IConfig = {
     "password": process.env.DB_PASSWORD!,
     "database": "ts-jeju",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": true
   },
   "test": {
     "username": "root",
     "password": process.env.DB_PASSWORD!,
-    "database": "ts-jeju",
+    "database": "hotjeju_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false,
   },
   "production": {
     "username": "root",
     "password": process.env.DB_PASSWORD!,
     "database": "ts-jeju",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false,
   }
 }
 
