@@ -8,7 +8,7 @@ import User from '../models/user';
 dotenv.config();
 
 export default () => {
-  passport.use(
+  passport.use('kakao',
     new KakaoStrategy(
       {
         clientID: process.env.KAKAO_ID!,
