@@ -1,5 +1,6 @@
 import * as passport from 'passport';
 import local from './local';
+import kakao from './kakao';
 import User from '../models/user';
 
 export default () => {
@@ -22,4 +23,5 @@ export default () => {
   });
 
   local();
+  kakao();
 }
