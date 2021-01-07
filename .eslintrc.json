@@ -11,6 +11,7 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     // "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }]
+    "@typescript-eslint/no-non-null-assertion": false
   },
   "parserOptions": {
     "parser": "@typescript-eslint/parser"
