@@ -24,7 +24,7 @@ Image.init(
   }
 );
 
-export const associate = (db: dbType) => {
+export const associate = (db: dbType): void => {
   db.Image.belongsTo(db.Place);
 }
 

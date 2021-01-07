@@ -1,6 +1,9 @@
-import { DataTypes, Model } from 'sequelize';
+import { BelongsToManyAddAssociationMixin, BelongsToManyAddAssociationsMixin, DataTypes, HasManyAddAssociationMixin, HasManyAddAssociationsMixin, Model } from 'sequelize';
+import Hashtag from './hashtag';
+import Image from './image';
 import { dbType } from './index';
 import { sequelize } from './sequelize';
+import User from './user';
 
 class Place extends Model {
   public readonly id!: number;
@@ -10,6 +13,17 @@ class Place extends Model {
   public fee!: number;
   public lat?: number;
   public lng?: number;
+
+  public UserId!: number;
+
+  public addHashtags!: BelongsToManyAddAssociationsMixin<Hashtag, number>;
+  public addImages!: HasManyAddAssociationsMixin<Image, number>;
+  public addImage!: HasManyAddAssociationMixin<Image, number>;
+  public addLiker!: BelongsToManyAddAssociationMixin<User, number>;
+  public addLikers!: BelongsToManyAddAssociationsMixin<User, number>;
+  public removeLiker!: BelongsToManyAddAssociationMixin<User, number>;
+  public addWisher!: BelongsToManyAddAssociationMixin<User, number>;
+  public removeWisher!: BelongsToManyAddAssociationMixin<User, number>;
 }
 
 Place.init(
@@ -51,7 +65,7 @@ Place.init(
   }
 );
 
-export const associate = (db: dbType) => {
+export const associate = (db: dbType): void => {
   db.Place.belongsTo(db.User);
   db.Place.belongsToMany(db.User, { through: 'Like', as: 'Likers' });
   db.Place.belongsToMany(db.User, { through: 'WishList', as: 'Wishers' });

@@ -24,8 +24,8 @@ Hashtag.init(
   }
 );
 
-export const associate = (db: dbType) => {
-
+export const associate = (db: dbType): void => {
+  db.Hashtag.belongsToMany(db.Place, { through: 'PlaceHashtag' });
 }
 
 export default Hashtag;

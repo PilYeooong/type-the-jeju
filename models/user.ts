@@ -52,7 +52,7 @@ User.init(
   }
 );
 
-export const associate = (db: dbType) => {
+export const associate = (db: dbType): void => {
   db.User.belongsToMany(db.Place, { through: 'Like', as: 'Liked' });
   db.User.belongsToMany(db.Place, { through: 'WishList', as: 'Wished' });
 }

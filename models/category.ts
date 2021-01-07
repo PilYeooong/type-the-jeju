@@ -1,10 +1,13 @@
 import { DataTypes, Model } from 'sequelize';
 import { dbType } from './index';
+import Place from './place';
 import { sequelize } from './sequelize';
 
 class Category extends Model {
   public readonly id!: number;
   public name!: string;
+
+  public Places?: Place[];
 }
 
 Category.init(
@@ -25,7 +28,7 @@ Category.init(
   }
 );
 
-export const associate = (db: dbType) => {
+export const associate = (db: dbType): void => {
   db.Category.hasMany(db.Place);
 }
 
