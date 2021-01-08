@@ -21,8 +21,7 @@
           "useTabs": false,
           "tabWidth": 2,
           "printWidth": 80,
-          "bracketSpacing": true,
-          "arrowParens": "avoid"
+          "bracketSpacing": true
         }
       ]
   },

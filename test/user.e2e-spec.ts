@@ -10,7 +10,7 @@ beforeAll(async (done) => {
 
 const TEST_EMAIL = 'test@test.com';
 const TEST_PASSWORD = 'test';
-const TEST_NICKNAME = 'nickname'
+const TEST_NICKNAME = 'nickname';
 
 describe('POST /join', () => {
   it('회원가입 수행', async (done) => {
@@ -36,7 +36,6 @@ describe('POST /join', () => {
 });
 
 describe('POST /login ~ ', () => {
-
   const agent = request.agent(app);
 
   it('로그인 수행', async (done) => {
@@ -75,7 +74,7 @@ describe('POST /login ~ ', () => {
   });
 
   it('로그아웃 상태에서는 로그아웃 시도시 403 에러', async (done) => {
-    const res =  await agent.post('/api/user/logout');
+    const res = await agent.post('/api/user/logout');
     expect(res.status).toEqual(401);
     expect(res.text).toEqual('로그인이 필요합니다.');
     done();
@@ -106,15 +105,17 @@ describe('POST /check/JejuNative', () => {
   it('도내 lat, lng일 시 응답 코드 200과 true를 반환', async (done) => {
     const mockedResult = {
       data: {
-        results: [{
-          region: {
-            area1: {
-              name: '제주특별자치도'
-            }
-          }
-        }]
-      }
-    }
+        results: [
+          {
+            region: {
+              area1: {
+                name: '제주특별자치도',
+              },
+            },
+          },
+        ],
+      },
+    };
     axios.get = jest.fn().mockResolvedValue(mockedResult);
 
     const res = await agent.post('/api/user/check/jejunative').send({
@@ -129,15 +130,17 @@ describe('POST /check/JejuNative', () => {
   it('도내가 아닌 lat, lng일 시 응답 코드 200과 false를 반환', async (done) => {
     const mockedResult = {
       data: {
-        results: [{
-          region: {
-            area1: {
-              name: '서울'
-            }
-          }
-        }]
-      }
-    }
+        results: [
+          {
+            region: {
+              area1: {
+                name: '서울',
+              },
+            },
+          },
+        ],
+      },
+    };
     axios.get = jest.fn().mockResolvedValue(mockedResult);
 
     const res = await agent.post('/api/user/check/jejunative').send({
@@ -148,7 +151,7 @@ describe('POST /check/JejuNative', () => {
     expect(res.text).toEqual('false');
     done();
   });
-})
+});
 
 afterAll(async (done) => {
   await sequelize.sync({ force: true });
