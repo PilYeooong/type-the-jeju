@@ -7,7 +7,7 @@ class Category extends Model {
   public readonly id!: number;
   public name!: string;
 
-  public Places?: Place[];
+  public Places!: Place[] | [];
 }
 
 Category.init(
@@ -30,6 +30,6 @@ Category.init(
 
 export const associate = (db: dbType): void => {
   db.Category.hasMany(db.Place);
-}
+};
 
 export default Category;

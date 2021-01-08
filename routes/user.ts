@@ -1,5 +1,11 @@
 import * as express from 'express';
-import { checkJejuNative, getMe, login, logout, signUp } from '../controllers/user';
+import {
+  checkJejuNative,
+  getMe,
+  login,
+  logout,
+  signUp,
+} from '../controllers/user';
 import { isLoggedIn, isNotLoggedIn } from './middlewares';
 
 const router = express.Router();

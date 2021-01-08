@@ -15,7 +15,7 @@ export default (): void => {
       const user = await User.findOne({
         where: { id },
       });
-      if(user) {
+      if (user) {
         return done(null, user);
       }
     } catch (err) {
@@ -26,4 +26,4 @@ export default (): void => {
 
   local();
   kakao();
-}
+};
