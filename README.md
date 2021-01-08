@@ -18,6 +18,9 @@
 
 <br />
 
+## **After work...**
+[기존 JS 프로젝트에 TypeScript를 적용해보며 느낀점](https://velog.io/@pilyeooong/%EA%B8%B0%EC%A1%B4-JS-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-TypeScript%EB%A5%BC-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EB%A9%B0-%EB%8A%90%EB%82%80%EC%A0%90)
+
 ### **Contact**
 
 pilyeooong@gmail.com
