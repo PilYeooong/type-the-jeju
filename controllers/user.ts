@@ -92,7 +92,11 @@ export const logout = (req: Request, res: Response): void => {
 };
 
 export const signUp = async (
-  req: Request<unknown, unknown, { email: string; password: string; nickname: string }>,
+  req: Request<
+    unknown,
+    unknown,
+    { email: string; password: string; nickname: string }
+  >,
   res: Response,
   next: NextFunction
 ): Promise<Response<User> | undefined> => {
