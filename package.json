@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "tsc && node ./dist/index",
-    "test": "jest",
+    "test": "jest ./routes",
     "test:watch": "jest --watch --runInBand --detectOpenHandles",
     "test:e2e": "jest --config ./test/jest-e2e.json --runInBand --detectOpenHandles"
   },

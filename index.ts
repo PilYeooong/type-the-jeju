@@ -17,20 +17,23 @@ dotenv.config();
 
 const app = express();
 passportConfig();
-sequelize.sync({ force: false})
+sequelize
+  .sync({ force: false })
   .then(() => {
-    console.log('DB connected')
+    console.log('DB connected');
   })
   .catch(() => {
     console.error('DB Error');
-  })
+  });
 
 const prod = process.env.NODE_ENV === 'production';
 if (prod) {
-  app.use(cors({
-    origin: true,
-    credentials: true,
-  }));
+  app.use(
+    cors({
+      origin: true,
+      credentials: true,
+    })
+  );
   app.use(morgan('combined'));
   app.use(helmet());
   app.use(hpp());
@@ -57,10 +60,6 @@ app.use('/api', apiRouter);
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err);
   res.status(500).send('server error');
-});
-
-app.listen(4000, () => {
-  console.log(`server is running on port 4000`);
 });
 
 export default app;
