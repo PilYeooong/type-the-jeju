@@ -11,7 +11,7 @@ const db = {
   Category,
   Image,
   Hashtag,
-}
+};
 
 export type dbType = typeof db;
 

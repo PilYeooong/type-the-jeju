@@ -1,4 +1,11 @@
-import { BelongsToManyAddAssociationMixin, BelongsToManyAddAssociationsMixin, DataTypes, HasManyAddAssociationMixin, HasManyAddAssociationsMixin, Model } from 'sequelize';
+import {
+  BelongsToManyAddAssociationMixin,
+  BelongsToManyAddAssociationsMixin,
+  DataTypes,
+  HasManyAddAssociationMixin,
+  HasManyAddAssociationsMixin,
+  Model,
+} from 'sequelize';
 import Hashtag from './hashtag';
 import Image from './image';
 import { dbType } from './index';
@@ -53,7 +60,7 @@ Place.init(
     lng: {
       type: DataTypes.STRING(30),
       allowNull: true,
-    }
+    },
   },
   {
     modelName: 'Place',
@@ -72,6 +79,6 @@ export const associate = (db: dbType): void => {
   db.Place.belongsToMany(db.Hashtag, { through: 'PlaceHashtag' });
   db.Place.belongsTo(db.Category);
   db.Place.hasMany(db.Image);
-}
+};
 
 export default Place;
