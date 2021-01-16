@@ -11,7 +11,15 @@ import {
   unWishPlace,
   wishPlace,
 } from '../controllers/place';
-import { isLoggedIn, isNotLoggedIn, upload } from './middlewares';
+import { isLoggedIn, upload } from './middlewares';
+import * as fs from 'fs';
+
+try {
+  fs.accessSync('uploads');
+} catch (err) {
+  console.log('uploads folder not exist, Creating');
+  fs.mkdirSync('uploads');
+}
 
 const router = express.Router();
 
@@ -25,13 +33,13 @@ router.post('/', upload.none(), addPlace);
 
 router.get('/:id', placeDetail);
 
-router.patch('/:placeId/like', likePlace);
+router.patch('/:placeId/like', isLoggedIn, likePlace);
 
-router.patch('/:placeId/unlike', unLikePlace);
+router.patch('/:placeId/unlike', isLoggedIn, unLikePlace);
 
-router.patch('/:placeId/wish', wishPlace);
+router.patch('/:placeId/wish', isLoggedIn, wishPlace);
 
-router.patch('/:placeId/unwish', unWishPlace);
+router.patch('/:placeId/unwish', isLoggedIn, unWishPlace);
 
 router.post('/directions', searchDirections);
 
